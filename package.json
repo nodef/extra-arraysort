@@ -1,11 +1,21 @@
 {
   "name": "extra-arraysort",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A sorting algorithm puts elements of an array in a certain order.",
   "main": "index.js",
+  "module": "index.mjs",
+  "exports": {
+    "require": "./index.js",
+    "import": "./index.mjs"
+  },
   "scripts": {
+    "einit": "ebuild init",
+    "ecode": "ebuild update --docs false",
+    "eupdate": "ebuild update",
+    "escatter": "ebuild scatter",
     "test": "exit"
   },
+  "runkitExampleFilename": "example.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nodef/extra-arraysort.git"
