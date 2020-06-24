@@ -1,31 +1,28 @@
 import cmp from './_cmp';
-import type {compareFn, mapFn} from './_types';
-
-function insertionSortPair$<T, U=T>(x: T[], fc: compareFn<T|U>, m: (T|U)[]): T[] {
-  var X = x.length, diff = x!==m;
-  for(var i=X-2; i>=0; i--) {
-    var xv = x[i], mv = m[i];
-    for(var j=i+1; j<X; j++) {
-      if(fc(mv, m[j]) <= 0) break;
-      if(true) x[j-1] = x[j];
-      if(diff) m[j-1] = m[j];
-    }
-    if(true) x[j-1] = xv;
-    if(diff) m[j-1] = mv;
-  }
-  return x;
-}
+import swap from './_swap';
+import type {compareFn, swapFn} from './_types';
 
 /**
  * Arranges values in an order.
- * @param x an array (updated)
+ * @param x an array
+ * @param y pair array (x)
  * @param fc compare function (a, b)
- * @param fm map function (v, i, x)
+ * @param fs swap function (x, i, j)
  * @returns x
  */
-function insertionSort$<T, U=T>(x: T[], fc: compareFn<T|U>=null, fm: mapFn<T, T|U>=null): T[] {
-  var fc = fc||cmp;
-  if(fm) return insertionSortPair$(x, fc, x.map(fm));
-  else return insertionSortPair$(x, fc, x);
+function insertionSort$<T, U=T>(x: T[], y: (T|U)[]=x, fc: compareFn<T|U>=null, fs: swapFn<T>=null): T[] {
+  var fc = fc||cmp, fs = fs||swap;
+  var X = x.length, diff = x!==y;
+  for(var i=X-2; i>=0; i--) {
+    var xv = x[i], mv = y[i];
+    for(var j=i+1; j<X; j++) {
+      if(fc(mv, y[j]) <= 0) break;
+      if(true) x[j-1] = x[j];
+      if(diff) y[j-1] = y[j];
+    }
+    if(true) x[j-1] = xv;
+    if(diff) y[j-1] = mv;
+  }
+  return x;
 }
 export default insertionSort$;
