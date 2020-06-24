@@ -1,6 +1,6 @@
 {
   "name": "extra-arraysort",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A sorting algorithm puts elements of an array in a certain order.",
   "main": "index.js",
   "module": "index.mjs",
@@ -30,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/nodef/extra-arraysort/issues"
   },
-  "homepage": "https://github.com/nodef/extra-arraysort#readme"
+  "homepage": "https://github.com/nodef/extra-arraysort#readme",
+  "devDependencies": {
+    "extra-build": "^1.0.187"
+  }
 }
