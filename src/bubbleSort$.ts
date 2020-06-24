@@ -4,8 +4,8 @@ import type {compareFn, swapFn} from './_types';
 
 /**
  * Arranges values in an order.
- * @param x an array
- * @param y pair array (x)
+ * @param x an array (updated)
+ * @param y pair array [x]
  * @param fc compare function (a, b)
  * @param fs swap function (x, i, j)
  * @returns x
